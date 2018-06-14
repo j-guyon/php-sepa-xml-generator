@@ -421,7 +421,11 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
         //Direct Debit Transaction data
         $directDebitTransactionInformation = new \SimpleXMLElement('<DrctDbtTxInf></DrctDbtTxInf>');
         $paymentIdentification = $directDebitTransactionInformation->addChild('PmtId');
-        $paymentIdentification->addChild('InstrId', $this->getInstructionIdentification());
+
+        if ($this->getInstructionIdentification()) {
+            $paymentIdentification->addChild('InstrId', $this->getInstructionIdentification());
+        }
+        
         $paymentIdentification->addChild('EndToEndId', $this->getEndToEndIdentification());
 
         $directDebitTransactionInformation->addChild('InstdAmt', $this->getInstructedAmount())
