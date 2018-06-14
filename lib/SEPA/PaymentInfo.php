@@ -85,6 +85,27 @@ class PaymentInfo extends Message implements PaymentInfoInterface
     private $creditorName = '';
 
     /**
+     * Creditor nationality.
+     *
+     * @var string
+     */
+    private $creditorCountry = '';
+
+    /**
+     * Creditor address line.
+     *
+     * @var string
+     */
+    private $creditorAddressLine1 = '';
+
+    /**
+     * Second creditor address line.
+     *
+     * @var string
+     */
+    private $creditorAddressLine2 = '';
+
+    /**
      * Name by which a party is known and which is usually used to identify that party.
      * @var string
      */
@@ -269,6 +290,21 @@ class PaymentInfo extends Message implements PaymentInfoInterface
         return $this->creditorName;
     }
 
+    public function getCreditorCountry()
+    {
+        return $this->creditorCountry;
+    }
+
+    public function getCreditorAddressLine1()
+    {
+        return $this->creditorAddressLine1;
+    }
+
+    public function getCreditorAddressLine2()
+    {
+        return $this->creditorAddressLine2;
+    }
+
     public function getDebitorName()
     {
         return $this->debitorName;
@@ -410,6 +446,27 @@ class PaymentInfo extends Message implements PaymentInfoInterface
         }
 
         $this->creditorName = $creditorName;
+        return $this;
+    }
+
+    public function setCreditorCountry($creditorCountry)
+    {
+        $this->creditorCountry = $creditorCountry;
+
+        return $this;
+    }
+
+    public function setCreditorAddressLine1($creditorAddressLine1)
+    {
+        $this->creditorAddressLine1 = $creditorAddressLine1;
+
+        return $this;
+    }
+
+    public function setCreditorAddressLine2($creditorAddressLine2)
+    {
+        $this->creditorAddressLine2 = $creditorAddressLine2;
+
         return $this;
     }
 
@@ -948,6 +1005,15 @@ class PaymentInfo extends Message implements PaymentInfoInterface
     {
         $creditor = $paymentInfo->addChild('Cdtr');
         $creditor->addChild('Nm', $this->getCreditorName());
+
+        if ($this->getCreditorCountry() && $this->getCreditorAddressLine1()) {
+            $address = $creditor->addChild('PstlAdr');
+            $address->addChild('Ctry', $this->getCreditorCountry());
+            $address->addChild('AdrLine', $this->getCreditorAddressLine1());
+            if ($this->getCreditorAddressLine2()) {
+                $address->addChild('AdrLine', $this->getCreditorAddressLine2());
+            }
+        }
 
         $creditorAccount = $paymentInfo->addChild('CdtrAcct');
         $creditorAccountID = $creditorAccount->addChild('Id');
