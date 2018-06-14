@@ -12,324 +12,338 @@ namespace SEPA;
  * Class SepaDirectDebitTransactions
  * @package SEPA
  */
-class DirectDebitTransaction extends PaymentInfo implements TransactionInterface {
+class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
+{
 
-	/**
-	 * BIC Code not provided
-	 */
-	const BIC_NOTPROVIDED = 'NOTPROVIDED';
+    /**
+     * BIC Code not provided
+     */
+    const BIC_NOTPROVIDED = 'NOTPROVIDED';
 
-	/**
-	 * Direct Debit Currency
-	 */
-	const CURRENCY = 'EUR';
+    /**
+     * Direct Debit Currency
+     */
+    const CURRENCY = 'EUR';
 
-	/**
-	 * Unique identification as assigned by an instructing party for an instructed party to unambiguously identify
-	 * the instruction.
-	 * @var string
-	 */
-	private $InstructionIdentification = '';
+    /**
+     * Unique identification as assigned by an instructing party for an instructed party to unambiguously identify
+     * the instruction.
+     * @var string
+     */
+    private $InstructionIdentification = '';
 
-	/**
-	 *Unique identification assigned by the initiating party to unumbiguously identify the transaction.
-	 * This identification is passed on, unchanged, throughout the entire end-to-end chain.
-	 * @var string
-	 */
-	private $EndToEndIdentification = '';
+    /**
+     *Unique identification assigned by the initiating party to unumbiguously identify the transaction.
+     * This identification is passed on, unchanged, throughout the entire end-to-end chain.
+     * @var string
+     */
+    private $EndToEndIdentification = '';
 
-	private $currency = '';
+    private $currency = '';
 
-	/**
-	 * Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in
-	 * the currency as ordered by the initiating party.
-	 * @var float
-	 */
-	private $InstructedAmount = 0.00;
+    /**
+     * Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in
+     * the currency as ordered by the initiating party.
+     * @var float
+     */
+    private $InstructedAmount = 0.00;
 
-	/**
-	 * Unique identification, as assigned by the creditor, to unambiguously identify the mandate. SDD
-	 * max 35 length
-	 * @var string
-	 */
-	private $MandateIdentification = '';
+    /**
+     * Unique identification, as assigned by the creditor, to unambiguously identify the mandate. SDD
+     * max 35 length
+     * @var string
+     */
+    private $MandateIdentification = '';
 
-	/**
-	 * Direct Debit Transaction DateTime
-	 * @var string
-	 */
-	private $DateOfSignature = '';
+    /**
+     * Direct Debit Transaction DateTime
+     * @var string
+     */
+    private $DateOfSignature = '';
 
-	/**
-	 * Debit Bank BIC
-	 * @var string
-	 */
-	private $BIC = '';
+    /**
+     * Debit Bank BIC
+     * @var string
+     */
+    private $BIC = '';
 
-	/**
-	 * Debit Name
-	 * @var string
-	 */
-	private $DebtorName = '';
+    /**
+     * Debit Name
+     * @var string
+     */
+    private $DebtorName = '';
 
-	/**
-	 * Direct Debit IBAN
-	 * @var string
-	 */
-	private $IBAN = '';
+    /**
+     * Direct Debit IBAN
+     * @var string
+     */
+    private $IBAN = '';
 
-	/**
-	 * Information supplied to enable the matching/reconciliation of an entry with the items that the payment is
-	 * intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.
-	 * max 140 length
-	 * @var string
-	 */
-	private $directDebitInvoice = '';
+    /**
+     * Information supplied to enable the matching/reconciliation of an entry with the items that the payment is
+     * intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.
+     * max 140 length
+     * @var string
+     */
+    private $directDebitInvoice = '';
 
-	/**
-	 * @return string
-	 */
-	public function getInstructionIdentification() {
-		return $this->InstructionIdentification;
-	}
+    /**
+     * @return string
+     */
+    public function getInstructionIdentification()
+    {
+        return $this->InstructionIdentification;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getEndToEndIdentification() {
-		return $this->EndToEndIdentification;
-	}
+    /**
+     * @return string
+     */
+    public function getEndToEndIdentification()
+    {
+        return $this->EndToEndIdentification;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getMandateIdentification() {
-		return $this->MandateIdentification;
-	}
+    /**
+     * @return string
+     */
+    public function getMandateIdentification()
+    {
+        return $this->MandateIdentification;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getDateOfSignature() {
-		return $this->DateOfSignature;
-	}
+    /**
+     * @return string
+     */
+    public function getDateOfSignature()
+    {
+        return $this->DateOfSignature;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getBIC() {
-		return $this->BIC;
-	}
+    /**
+     * @return string
+     */
+    public function getBIC()
+    {
+        return $this->BIC;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getIBAN() {
+    /**
+     * @return string
+     */
+    public function getIBAN()
+    {
+        return $this->IBAN;
+    }
 
-		return $this->IBAN;
-	}
+    /**
+     * @return string
+     */
+    public function getDebtorName()
+    {
+        return $this->DebtorName;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getDebtorName() {
-		return $this->DebtorName;
-	}
+    /**
+     * @return string
+     */
+    public function getDirectDebitInvoice()
+    {
+        return $this->directDebitInvoice;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getDirectDebitInvoice() {
-		return $this->directDebitInvoice;
-	}
+    /**
+     * @param $instructionIdentifier
+     * @return $this
+     */
+    public function setInstructionIdentification($instructionIdentifier)
+    {
+        $this->InstructionIdentification = $instructionIdentifier;
+        return $this;
+    }
 
-	/**
-	 * @param $instructionIdentifier
-	 * @return $this
-	 */
-	public function setInstructionIdentification($instructionIdentifier) {
-		$this->InstructionIdentification = $instructionIdentifier;
-		return $this;
-	}
+    /**
+     * @param $instructionIdentifierEndToEnd
+     * @return $this
+     */
+    public function setEndToEndIdentification($instructionIdentifierEndToEnd)
+    {
+        $this->EndToEndIdentification = $instructionIdentifierEndToEnd;
+        return $this;
+    }
 
-	/**
-	 * @param $instructionIdentifierEndToEnd
-	 * @return $this
-	 */
-	public function setEndToEndIdentification($instructionIdentifierEndToEnd) {
-		$this->EndToEndIdentification = $instructionIdentifierEndToEnd;
-		return $this;
-	}
+    /**
+     * Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in
+     * the currency as ordered by the initiating party.
+     * @param $amount
+     * @return $this
+     */
+    public function setInstructedAmount($amount)
+    {
+        $this->InstructedAmount = $this->amountToString($amount);
+        return $this;
+    }
 
-	/**
-	 * Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in
-	 * the currency as ordered by the initiating party.
-	 * @param $amount
-	 * @return $this
-	 */
-	public function setInstructedAmount($amount) {
-		$this->InstructedAmount = $this->amountToString($amount);
-		return $this;
-	}
+    public function setCurrency($currency)
+    {
+        $this->currency = strtoupper($currency);
+        return $this;
+    }
 
-	public function setCurrency($currency) {
-		$this->currency = strtoupper($currency);
-		return $this;
-	}
+    public function getCurrency()
+    {
+        if (empty($this->currency) || is_null($this->currency)) {
+            $this->currency = self::CURRENCY;
+        }
+        return $this->currency;
+    }
 
-	public function getCurrency() {
-		if ( empty($this->currency) || is_null($this->currency) ) {
+    /**
+     * Unique identification, as assigned by the creditor, to unambiguously identify the mandate.
+     * @param $directDebitSDD
+     * @return $this
+     */
+    public function setMandateIdentification($directDebitSDD)
+    {
+        $this->MandateIdentification = $directDebitSDD;
+        return $this;
+    }
 
-			$this->currency = self::CURRENCY;
-		}
-		return $this->currency;
-	}
+    /**
+     * @param $directDebitDateTime
+     * @return $this
+     */
+    public function setDateOfSignature($directDebitDateTime)
+    {
+        $this->DateOfSignature = $directDebitDateTime;
+        return $this;
+    }
 
-	/**
-	 * Unique identification, as assigned by the creditor, to unambiguously identify the mandate.
-	 * @param $directDebitSDD
-	 * @return $this
-	 */
-	public function setMandateIdentification($directDebitSDD) {
-		$this->MandateIdentification = $directDebitSDD;
-		return $this;
-	}
+    /**
+     * Financial institution servicing an account for the debtor.
+     * Bank Identifier Code.
+     * max length
+     * @param $BIC
+     * @return $this
+     */
+    public function setDebitBIC($BIC)
+    {
+        $this->BIC = $this->removeSpaces($BIC);
 
-	/**
-	 * @param $directDebitDateTime
-	 * @return $this
-	 */
-	public function setDateOfSignature($directDebitDateTime) {
-		$this->DateOfSignature = $directDebitDateTime;
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Financial institution servicing an account for the debtor.
-	 * Bank Identifier Code.
-	 * max length
-	 * @param $BIC
-	 * @return $this
-	 */
-	public function setDebitBIC($BIC) {
+    /**
+     * Name by which a party is known and which is usually used to identify that party.
+     * @param $name
+     * @return $this
+     * @throws \Exception
+     */
+    public function setDebtorName($name)
+    {
+        $name = $this->unicodeDecode($name);
 
-		$this->BIC = $this->removeSpaces($BIC);
+        if (!$this->checkStringLength($name, 140)) {
+            throw new \Exception(ERROR_MSG_DD_NAME . $this->getInstructionIdentification());
+        }
+        $this->DebtorName = $name;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Direct Debit IBAN
+     * max  34 length
+     * @param $IBAN
+     * @throws \Exception
+     * @return $this
+     */
+    public function setDebitIBAN($IBAN)
+    {
+        $IBAN = $this->removeSpaces($IBAN);
 
-	/**
-	 * Name by which a party is known and which is usually used to identify that party.
-	 * @param $name
-	 * @return $this
-	 * @throws \Exception
-	 */
-	public function setDebtorName($name) {
-		$name = $this->unicodeDecode($name);
+        if (!$this->checkIBAN($IBAN)) {
+            throw new \Exception(ERROR_MSG_DD_IBAN . $this->getInstructionIdentification());
+        }
+        $this->IBAN = $IBAN;
+        return $this;
+    }
 
-		if ( !$this->checkStringLength($name, 140) ) {
+    /**
+     * Direct Debit Invoice
+     * @param $invoice
+     * @return $this
+     * @throws \Exception
+     */
+    public function setDirectDebitInvoice($invoice)
+    {
+        $invoice = $this->unicodeDecode($invoice);
 
-			throw new \Exception(ERROR_MSG_DD_NAME . $this->getInstructionIdentification());
-		}
-		$this->DebtorName = $name;
-		return $this;
-	}
+        if (!$this->checkStringLength($invoice, 140)) {
+            throw new \Exception(ERROR_MSG_DD_INVOICE_NUMBER . $this->getInstructionIdentification());
+        }
+        $this->directDebitInvoice = $invoice;
+        return $this;
+    }
 
-	/**
-	 * Direct Debit IBAN
-	 * max  34 length
-	 * @param $IBAN
-	 * @throws \Exception
-	 * @return $this
-	 */
-	public function setDebitIBAN($IBAN) {
-		$IBAN = $this->removeSpaces($IBAN);
+    /**
+     * Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the
+     * currency as ordered by the initiating party.
+     * @return float
+     */
+    public function getInstructedAmount()
+    {
+        return $this->InstructedAmount;
+    }
 
-		if ( !$this->checkIBAN($IBAN) ) {
+    /**
+     * @return bool
+     */
+    public function checkIsValidTransaction()
+    {
+        if (!$this->getIBAN() || !$this->getDirectDebitInvoice() || !$this->getDebtorName()) {
+            return false;
+        }
+        return true;
+    }
 
-			throw new \Exception(ERROR_MSG_DD_IBAN . $this->getInstructionIdentification());
-		}
-		$this->IBAN = $IBAN;
-		return $this;
-	}
+    /**
+     * @return \SimpleXMLElement
+     */
+    public function getSimpleXMLElementTransaction()
+    {
+        //Direct Debit Transaction data
+        $directDebitTransactionInformation = new \SimpleXMLElement('<DrctDbtTxInf></DrctDbtTxInf>');
+        $paymentIdentification = $directDebitTransactionInformation->addChild('PmtId');
+        $paymentIdentification->addChild('InstrId', $this->getInstructionIdentification());
+        $paymentIdentification->addChild('EndToEndId', $this->getEndToEndIdentification());
 
-	/**
-	 * Direct Debit Invoice
-	 * @param $invoice
-	 * @return $this
-	 * @throws \Exception
-	 */
-	public function setDirectDebitInvoice($invoice) {
-		$invoice = $this->unicodeDecode($invoice);
+        $directDebitTransactionInformation->addChild('InstdAmt', $this->getInstructedAmount())
+            ->addAttribute('Ccy', $this->getCurrency());
 
-		if ( !$this->checkStringLength($invoice, 140) ) {
+        $directDebitTransaction = $directDebitTransactionInformation->addChild('DrctDbtTx');
+        $mandateRelatedInformation = $directDebitTransaction->addChild('MndtRltdInf');
+        $mandateRelatedInformation->addChild('MndtId', $this->getMandateIdentification());
+        $mandateRelatedInformation->addChild('DtOfSgntr', $this->getDateOfSignature());
 
-			throw new \Exception(ERROR_MSG_DD_INVOICE_NUMBER . $this->getInstructionIdentification());
-		}
-		$this->directDebitInvoice = $invoice;
-		return $this;
-	}
-
-	/**
-	 * Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the
-	 * currency as ordered by the initiating party.
-	 * @return float
-	 */
-	public function getInstructedAmount() {
-		return $this->InstructedAmount;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function checkIsValidTransaction() {
-		if ( !$this->getIBAN() || !$this->getDirectDebitInvoice() || !$this->getDebtorName()) {
-
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * @return \SimpleXMLElement
-	 */
-	public function getSimpleXMLElementTransaction() {
-
-		//Direct Debit Transaction data
-		$directDebitTransactionInformation = new \SimpleXMLElement('<DrctDbtTxInf></DrctDbtTxInf>');
-		$paymentIdentification = $directDebitTransactionInformation->addChild('PmtId');
-		$paymentIdentification->addChild('InstrId', $this->getInstructionIdentification());
-		$paymentIdentification->addChild('EndToEndId', $this->getEndToEndIdentification());
-
-		$directDebitTransactionInformation->addChild('InstdAmt', $this->getInstructedAmount())
-			->addAttribute('Ccy', $this->getCurrency());
-
-		$directDebitTransaction = $directDebitTransactionInformation->addChild('DrctDbtTx');
-		$mandateRelatedInformation = $directDebitTransaction->addChild('MndtRltdInf');
-		$mandateRelatedInformation->addChild('MndtId', $this->getMandateIdentification());
-		$mandateRelatedInformation->addChild('DtOfSgntr', $this->getDateOfSignature());
-
-		if ( $this->getBIC() ) {
-			$debtorAgent  = $directDebitTransactionInformation->addChild('DbtrAgt')
-				->addChild('FinInstnId');
-			$debtorAgent->addChild('BIC', $this->getBIC());
-		}
-		else {
-			$debtorAgent  = $directDebitTransactionInformation->addChild('DbtrAgt')
-				->addChild('FinInstnId')->addChild('Othr');
-			$debtorAgent->addChild('Id', self::BIC_NOTPROVIDED);
-		}
+        if ($this->getBIC()) {
+            $debtorAgent  = $directDebitTransactionInformation->addChild('DbtrAgt')
+                ->addChild('FinInstnId');
+            $debtorAgent->addChild('BIC', $this->getBIC());
+        } else {
+            $debtorAgent  = $directDebitTransactionInformation->addChild('DbtrAgt')
+                ->addChild('FinInstnId')->addChild('Othr');
+            $debtorAgent->addChild('Id', self::BIC_NOTPROVIDED);
+        }
 
 
-		$debtor = $directDebitTransactionInformation->addChild('Dbtr');
-		$debtor->addChild('Nm', $this->getDebtorName());
+        $debtor = $directDebitTransactionInformation->addChild('Dbtr');
+        $debtor->addChild('Nm', $this->getDebtorName());
 
-		$directDebitTransactionInformation->addChild('DbtrAcct')
-			->addChild('Id')
-			->addChild('IBAN', $this->getIBAN());
-		$directDebitTransactionInformation->addChild('RmtInf')
-			->addChild('Ustrd', $this->getDirectDebitInvoice());
+        $directDebitTransactionInformation->addChild('DbtrAcct')
+            ->addChild('Id')
+            ->addChild('IBAN', $this->getIBAN());
+        $directDebitTransactionInformation->addChild('RmtInf')
+            ->addChild('Ustrd', $this->getDirectDebitInvoice());
 
-		return $directDebitTransactionInformation;
-	}
+        return $directDebitTransactionInformation;
+    }
 }
