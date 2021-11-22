@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by Dumitru Russu. e-mail: dmitri.russu@gmail.com
  * Date: 7/8/13
@@ -66,6 +67,11 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
     private $electronicSignature = '';
 
     /**
+     * Direct Debit Electronic Signature, max 1025 length
+     * @var string
+     */
+    private $electronicSignature = '';
+    /**
      * Debit Bank BIC
      *
      * @var string
@@ -102,6 +108,32 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
      */
     private $debtorOrganizationIdentification = '';
 
+    /**
+     * Debitor Private Identification, max 35 length
+     * @var string
+     */
+    private $debtorPrivateIdentification = '';
+
+    /**
+     * Debitor Country Code, [A-Z]{2,2} ISO 3166
+     * @var string
+     */
+    private $debtorCountry = '';
+    /**
+     * Debitor Address line 1, max 70 length
+     * @var string
+     */
+    private $debtorAddressLine1 = '';
+    /**
+     * Debitor Addesss line 2, max 70 length
+     * @var string
+     */
+    private $debtorAddressLine2 = '';
+    /**
+     * Debitor Organization Identification, max 35 length
+     * @var string
+     */
+    private $debtorOrganizationIdentification = '';
     /**
      * Debitor Private Identification, max 35 length
      * @var string
@@ -163,6 +195,14 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
     /**
      * @return string
      */
+    public function getElectronicSignature()
+    {
+        return $this->electronicSignature;
+    }
+
+    /**
+     * @return string
+     */
     public function getBIC()
     {
         return $this->BIC;
@@ -204,6 +244,46 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
         return $this->debtorOrganizationIdentification;
     }
 
+    public function getDebtorPrivateIdentification()
+    {
+        return $this->debtorPrivateIdentification;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDebtorCountry()
+    {
+        return $this->debtorCountry;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDebtorAddressLine1()
+    {
+        return $this->debtorAddressLine1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDebtorAddressLine2()
+    {
+        return $this->debtorAddressLine2;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDebtorOrganizationIdentification()
+    {
+        return $this->debtorOrganizationIdentification;
+    }
+
+    /**
+     * @return string
+     */
     public function getDebtorPrivateIdentification()
     {
         return $this->debtorPrivateIdentification;
@@ -294,6 +374,17 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
     }
 
     /**
+     * @param $electronicSignature
+     * @return $this
+     */
+    public function setElectronicSignature($electronicSignature)
+    {
+        $this->electronicSignature = $electronicSignature;
+
+        return $this;
+    }
+
+    /**
      * Financial institution servicing an account for the debtor.
      * Bank Identifier Code.
      * max length
@@ -354,6 +445,61 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
         return $this;
     }
 
+    public function setDebtorPrivateIdentification($debtorPrivateIdentification)
+    {
+        $this->debtorPrivateIdentification = $debtorPrivateIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @param $debtorCountry
+     * @return $this
+     */
+    public function setDebtorCountry($debtorCountry)
+    {
+        $this->debtorCountry = $debtorCountry;
+
+        return $this;
+    }
+
+    /**
+     * @param $debtorAddressLine1
+     * @return $this
+     */
+    public function setDebtorAddressLine1($debtorAddressLine1)
+    {
+        $this->debtorAddressLine1 = $debtorAddressLine1;
+
+        return $this;
+    }
+
+    /**
+     * @param $debtorAddressLine2
+     * @return $this
+     */
+    public function setDebtorAddressLine2($debtorAddressLine2)
+    {
+        $this->debtorAddressLine2 = $debtorAddressLine2;
+
+        return $this;
+    }
+
+    /**
+     * @param $debtorOrganizationIdentification
+     * @return $this
+     */
+    public function setDebtorOrganizationIdentification($debtorOrganizationIdentification)
+    {
+        $this->debtorOrganizationIdentification = $debtorOrganizationIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @param $debtorPrivateIdentification
+     * @return $this
+     */
     public function setDebtorPrivateIdentification($debtorPrivateIdentification)
     {
         $this->debtorPrivateIdentification = $debtorPrivateIdentification;
