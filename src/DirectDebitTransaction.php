@@ -65,12 +65,6 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
      * @var string
      */
     private $electronicSignature = '';
-
-    /**
-     * Direct Debit Electronic Signature, max 1025 length
-     * @var string
-     */
-    private $electronicSignature = '';
     /**
      * Debit Bank BIC
      *
@@ -83,36 +77,6 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
      * @var string
      */
     private $DebtorName = '';
-
-    /**
-     * Debitor Country Code, [A-Z]{2,2} ISO 3166
-     * @var string
-     */
-    private $debtorCountry = '';
-
-    /**
-     * Debitor Address line 1, max 70 length
-     * @var string
-     */
-    private $debtorAddressLine1 = '';
-
-    /**
-     * Debitor Addesss line 2, max 70 length
-     * @var string
-     */
-    private $debtorAddressLine2 = '';
-
-    /**
-     * Debitor Organization Identification, max 35 length
-     * @var string
-     */
-    private $debtorOrganizationIdentification = '';
-
-    /**
-     * Debitor Private Identification, max 35 length
-     * @var string
-     */
-    private $debtorPrivateIdentification = '';
 
     /**
      * Debitor Country Code, [A-Z]{2,2} ISO 3166
@@ -187,11 +151,6 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
         return $this->DateOfSignature;
     }
 
-    public function getElectronicSignature()
-    {
-        return $this->electronicSignature;
-    }
-
     /**
      * @return string
      */
@@ -222,31 +181,6 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
     public function getDebtorName()
     {
         return $this->DebtorName;
-    }
-
-    public function getDebtorCountry()
-    {
-        return $this->debtorCountry;
-    }
-
-    public function getDebtorAddressLine1()
-    {
-        return $this->debtorAddressLine1;
-    }
-
-    public function getDebtorAddressLine2()
-    {
-        return $this->debtorAddressLine2;
-    }
-
-    public function getDebtorOrganizationIdentification()
-    {
-        return $this->debtorOrganizationIdentification;
-    }
-
-    public function getDebtorPrivateIdentification()
-    {
-        return $this->debtorPrivateIdentification;
     }
 
     /**
@@ -366,13 +300,6 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
         return $this;
     }
 
-    public function setElectronicSignature($electronicSignature)
-    {
-        $this->electronicSignature = $electronicSignature;
-
-        return $this;
-    }
-
     /**
      * @param $electronicSignature
      * @return $this
@@ -414,41 +341,6 @@ class DirectDebitTransaction extends PaymentInfo implements TransactionInterface
             throw new \Exception(ERROR_MSG_DD_NAME . $this->getInstructionIdentification());
         }
         $this->DebtorName = $name;
-        return $this;
-    }
-
-    public function setDebtorCountry($debtorCountry)
-    {
-        $this->debtorCountry = $debtorCountry;
-
-        return $this;
-    }
-
-    public function setDebtorAddressLine1($debtorAddressLine1)
-    {
-        $this->debtorAddressLine1 = $debtorAddressLine1;
-
-        return $this;
-    }
-
-    public function setDebtorAddressLine2($debtorAddressLine2)
-    {
-        $this->debtorAddressLine2 = $debtorAddressLine2;
-
-        return $this;
-    }
-
-    public function setDebtorOrganizationIdentification($debtorOrganizationIdentification)
-    {
-        $this->debtorOrganizationIdentification = $debtorOrganizationIdentification;
-
-        return $this;
-    }
-
-    public function setDebtorPrivateIdentification($debtorPrivateIdentification)
-    {
-        $this->debtorPrivateIdentification = $debtorPrivateIdentification;
-
         return $this;
     }
 
