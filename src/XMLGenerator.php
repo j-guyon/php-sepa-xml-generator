@@ -39,7 +39,7 @@ class XMLGenerator extends ValidationRules implements XMLGeneratorInterface
     /**
      * @var array
      */
-    private $sepaMessageObjects = array();
+    private $sepaMessageObjects = [];
     /**
      * @var SimpleXMLElement
      */
@@ -168,7 +168,7 @@ class XMLGenerator extends ValidationRules implements XMLGeneratorInterface
      * @param                  $newName
      * @return SimpleXMLElement
      */
-    function renameXmlNodeName(SimpleXMLElement $node, $newName)
+    public function renameXmlNodeName(SimpleXMLElement $node, $newName)
     {
         $newNode = new SimpleXMLElement("<$newName></$newName>");
 

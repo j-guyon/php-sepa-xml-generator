@@ -199,13 +199,13 @@ class PaymentInfo extends Message implements PaymentInfoInterface
      *
      * @var array
      */
-    private $directDebitTransactionObjects = array();
+    private $directDebitTransactionObjects = [];
     /**
      * Credit Transfert Transaction objects is a storage of Payment Info transactions for Credit Transfert
      *
      * @var array
      */
-    private $creditTransferTransactionObjects = array();
+    private $creditTransferTransactionObjects = [];
     /**
      * This field offer possibility to aggregate many transaction by unique MANDATE-ID,
      * also can be disabled by ->setAggregation(false).

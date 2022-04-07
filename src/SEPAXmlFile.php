@@ -2,9 +2,9 @@
 
 namespace SEPA;
 
+use \SEPA\Factory\XMLGeneratorFactory as SEPAXmlGeneratorFactory;
 use DOMDocument;
 use Exception;
-use \SEPA\Factory\XMLGeneratorFactory AS SEPAXmlGeneratorFactory;
 
 /**
  * Created By Dumitru Russu, e-mail: dmitri.russu@gmail.com
@@ -52,21 +52,21 @@ class SEPAXmlFile
      *
      * @var array
      */
-    public static $_MESSAGES = array(
-        array(
+    public static $_MESSAGES = [
+        [
             'message_id' => 123,
-            'group_header' => array(
+            'group_header' => [
                 'company_name' => 'Amazing SRL ȘȚțș ыаывпавпва '
-            ),
-            'payment_info' => array(
-                'FRST' => array(
+            ],
+            'payment_info' => [
+                'FRST' => [
                     'id' => 1,
                     'creditor_iban' => 'MD24 AG00 0225 1000 1310 4168',
                     'creditor_bic' => 'AABAFI42',
                     'creditor_name' => 'Amazing SRL',
                     'scheme_identifier' => 'FR07ZZZ519993',
-                    'transactions' => array(
-                        array(
+                    'transactions' => [
+                        [
                             'id' => 1,
                             'endId' => 2,
                             'company_name' => 'Roy SRL',
@@ -76,8 +76,8 @@ class SEPAXmlFile
                             'bic' => 'AABAFI22',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 122
-                        ),
-                        array(
+                        ],
+                        [
                             'id' => 3,
                             'endId' => 3,
                             'company_name' => 'Toy SRL',
@@ -87,18 +87,18 @@ class SEPAXmlFile
                             'bic' => 'AABAFI42',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 1223
-                        )
-                    )
-                ),
-                'RCUR' => array(
+                        ]
+                    ]
+                ],
+                'RCUR' => [
                     'id' => 2,
                     'creditor_iban' => 'MD24 AG00 0225 1000 1310 4168',
                     'creditor_bic' => 'AABAFI42',
                     'creditor_name' => 'Amazing SRL',
                     'scheme_identifier' => 'FR07ZZZ519993',
                     'requested_collection_date' => '2013-08-06',
-                    'transactions' => array(
-                        array(
+                    'transactions' => [
+                        [
                             'id' => 4,
                             'endId' => 4,
                             'company_name' => 'Loy SRL',
@@ -108,8 +108,8 @@ class SEPAXmlFile
                             'bic' => 'AABAFI52',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 122333
-                        ),
-                        array(
+                        ],
+                        [
                             'id' => 5,
                             'endId' => 7,
                             'company_name' => 'Goy SRL',
@@ -119,17 +119,17 @@ class SEPAXmlFile
                             'bic' => 'AABAFI62',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 122777
-                        )
-                    )
-                ),
-                'FNAL' => array(
+                        ]
+                    ]
+                ],
+                'FNAL' => [
                     'id' => 3,
                     'creditor_iban' => 'MD24 AG00 0225 1000 1310 4168',
                     'creditor_bic' => 'AABAFI42',
                     'creditor_name' => 'Amazing SRL',
                     'scheme_identifier' => 'FR07ZZZ519993',
-                    'transactions' => array(
-                        array(
+                    'transactions' => [
+                        [
                             'id' => 8,
                             'endId' => 8,
                             'company_name' => 'Voy SRL',
@@ -139,8 +139,8 @@ class SEPAXmlFile
                             'bic' => 'AABAFI72',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 12299988
-                        ),
-                        array(
+                        ],
+                        [
                             'id' => 9,
                             'endId' => 9,
                             'company_name' => 'Ioy SRL',
@@ -150,25 +150,25 @@ class SEPAXmlFile
                             'bic' => 'AABAFI82',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 1229333
-                        )
-                    )
-                )
-            )
-        ),
-        array(
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
             'message_id' => 124,
-            'group_header' => array(
+            'group_header' => [
                 'company_name' => 'Amazing SRL'
-            ),
-            'payment_info' => array(
-                'FRST' => array(
+            ],
+            'payment_info' => [
+                'FRST' => [
                     'id' => 4,
                     'creditor_iban' => 'MD24 AG00 0225 1000 1310 4168',
                     'creditor_bic' => 'AABAFI42',
                     'creditor_name' => 'Amazing SRL',
                     'scheme_identifier' => 'FR07ZZZ519993',
-                    'transactions' => array(
-                        array(
+                    'transactions' => [
+                        [
                             'id' => 10,
                             'endId' => 10,
                             'company_name' => 'Roy SRL',
@@ -178,8 +178,8 @@ class SEPAXmlFile
                             'bic' => 'AABAFI92',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 122232344
-                        ),
-                        array(
+                        ],
+                        [
                             'id' => 11,
                             'endId' => 12,
                             'company_name' => 'Roy SRL',
@@ -189,17 +189,17 @@ class SEPAXmlFile
                             'bic' => 'AABAFI22',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 1221111
-                        )
-                    )
-                ),
-                'RCUR' => array(
+                        ]
+                    ]
+                ],
+                'RCUR' => [
                     'id' => 5,
                     'creditor_iban' => 'MD24 AG00 0225 1000 1310 4168',
                     'creditor_bic' => 'AABAFI42',
                     'creditor_name' => 'Amazing SRL',
                     'scheme_identifier' => 'FR07ZZZ519993',
-                    'transactions' => array(
-                        array(
+                    'transactions' => [
+                        [
                             'id' => 14,
                             'endId' => 14,
                             'company_name' => 'Roy SRL',
@@ -209,8 +209,8 @@ class SEPAXmlFile
                             'bic' => 'AABAFI22',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 122454657
-                        ),
-                        array(
+                        ],
+                        [
                             'id' => 15,
                             'endId' => 15,
                             'company_name' => 'Roy SRL',
@@ -220,17 +220,17 @@ class SEPAXmlFile
                             'bic' => 'AABAFI22',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 12224343
-                        )
-                    )
-                ),
-                'FNAL' => array(
+                        ]
+                    ]
+                ],
+                'FNAL' => [
                     'id' => 6,
                     'creditor_iban' => 'MD24 AG00 0225 1000 1310 4168',
                     'creditor_bic' => 'AABAFI42',
                     'creditor_name' => 'Amazing SRL',
                     'scheme_identifier' => 'FR07ZZZ519993',
-                    'transactions' => array(
-                        array(
+                    'transactions' => [
+                        [
                             'id' => 16,
                             'endId' => 16,
                             'company_name' => 'Roy SRL',
@@ -240,8 +240,8 @@ class SEPAXmlFile
                             'bic' => 'AABAFI22',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 12223435
-                        ),
-                        array(
+                        ],
+                        [
                             'id' => 17,
                             'endId' => 17,
                             'company_name' => 'Roy SRL',
@@ -251,12 +251,12 @@ class SEPAXmlFile
                             'bic' => 'AABAFI22',
                             'mandate_sign_date' => '2013-08-03',
                             'invoice' => 122345456
-                        )
-                    )
-                )
-            )
-        )
-    );
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ];
 
     public function __construct()
     {
@@ -322,7 +322,6 @@ class SEPAXmlFile
             } catch (Exception $e) {
                 //Your Logs here
 //				$e->getMessage();
-
             }
         }
     }
@@ -375,7 +374,6 @@ class SEPAXmlFile
             } catch (Exception $e) {
                 //Your log here
 //				$e->getMessage();
-
             }
         }
     }
@@ -425,7 +423,7 @@ class SEPAXmlFile
     private function objectToArray($object)
     {
         if (is_object($object)) {
-            $resultArray = array();
+            $resultArray = [];
             foreach ($object as $key => $value) {
                 $result[$key] = $value;
             }

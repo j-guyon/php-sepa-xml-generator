@@ -21,8 +21,8 @@ namespace SEPA\Unicode;
 
 class Unidecode
 {
-    static $tr = array();
-    static $utf8_rx = '/([\xC0-\xDF][\x80-\xBF])|([\xE0-\xEF][\x80-\xBF]{2})|([\xF0-\xF4][\x80-\xBF]{3})/';
+    public static $tr = [];
+    public static $utf8_rx = '/([\xC0-\xDF][\x80-\xBF])|([\xE0-\xEF][\x80-\xBF]{2})|([\xF0-\xF4][\x80-\xBF]{3})/';
 
     private static function utf8_to_utf16($raw)
     {
@@ -105,9 +105,9 @@ class Unidecode
         }
     }
 
-    static function decode($str)
+    public static function decode($str)
     {
-        $callback = array(static::class, function_exists('mb_convert_encoding') ? 'unidecode_mb_replace' : 'unidecode_internal_replace');
+        $callback = [static::class, function_exists('mb_convert_encoding') ? 'unidecode_mb_replace' : 'unidecode_internal_replace'];
         return preg_replace_callback(self::$utf8_rx, $callback, $str);
     }
 }

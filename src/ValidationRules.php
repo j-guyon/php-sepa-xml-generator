@@ -9,9 +9,9 @@
 
 namespace SEPA;
 
+use CMPayments\IBAN;
 use DOMDocument;
 use SEPA\Unicode\Unidecode;
-use CMPayments\IBAN;
 
 class ValidationRules implements Validation
 {

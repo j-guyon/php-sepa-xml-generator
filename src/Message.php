@@ -31,7 +31,7 @@ class Message extends XMLGenerator implements MessageInterface
     /**
      * @var array
      */
-    private $paymentInfoObjects = array();
+    private $paymentInfoObjects = [];
 
     public function __construct()
     {
