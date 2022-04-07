@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by Dumitru Russu. e-mail: dmitri.russu@gmail.com
- * Date: 7/8/13
- * Time: 8:48 PM
- * Sepa Message NameSpace
- */
-
 namespace SEPA;
 
 /**
@@ -43,16 +36,14 @@ class Message extends XMLGenerator implements MessageInterface
     {
         switch ($this->getDocumentPainMode()) {
             case self::PAIN_001_001_02:
-            case self::PAIN_001_001_03:
-            {
-                $documentMessage = "<CstmrCdtTrfInitn></CstmrCdtTrfInitn>";
-                break;
-            }
-            default:
-            {
-                $documentMessage = "<CstmrDrctDbtInitn></CstmrDrctDbtInitn>";
-                break;
-            }
+            case self::PAIN_001_001_03: {
+                    $documentMessage = "<CstmrCdtTrfInitn></CstmrCdtTrfInitn>";
+                    break;
+                }
+            default: {
+                    $documentMessage = "<CstmrDrctDbtInitn></CstmrDrctDbtInitn>";
+                    break;
+                }
         }
 
         $this->message = new \SimpleXMLElement($documentMessage);

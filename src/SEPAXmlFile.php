@@ -7,8 +7,6 @@ use DOMDocument;
 use Exception;
 
 /**
- * Created By Dumitru Russu, e-mail: dmitri.russu@gmail.com
- *
  * Class SEPAXmlFile
  *
  * @package SEPA
@@ -321,7 +319,7 @@ class SEPAXmlFile
                 $this->xmlGeneratorObject->addXmlMessage($this->messageObject);
             } catch (Exception $e) {
                 //Your Logs here
-//				$e->getMessage();
+                //				$e->getMessage();
             }
         }
     }
@@ -373,7 +371,7 @@ class SEPAXmlFile
                 $this->messageObject->addMessagePaymentInfo($this->paymentInfoObject);
             } catch (Exception $e) {
                 //Your log here
-//				$e->getMessage();
+                //				$e->getMessage();
             }
         }
     }

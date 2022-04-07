@@ -1,12 +1,24 @@
 {
-	"name": "dmitrirussu/php-sepa-xml-generator",
+	"name": "dragermrb/php-sepa-xml-generator",
 	"type": "library",
 	"description": "Creates an XML file for a Single Euro Payments Area (SEPA) Direct Debit Payment.",
-	"keywords": ["SDD","dirdebit","banking", "sepa", "xml", "sepa-xml","sepa-dirdebit"],
+	"keywords": [
+		"SDD",
+		"dirdebit",
+		"banking",
+		"sepa",
+		"xml",
+		"sepa-xml",
+		"sepa-dirdebit"
+	],
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Dmitri Russu",
+			"name": "Manuel Rodríguez",
+			"email": "mrodriguez@whiteguru.com"
+		},
+		{
+			"name": "Dmitri Russu (original developer)",
 			"email": "dmitri.russu@gmail.com"
 		}
 	],
@@ -19,13 +31,13 @@
 	"prefer-stable": true,
 	"require": {
 		"php": ">=5.6",
-		"ext-bcmath": "*",
-		"ext-mbstring": "*",
-        "ext-dom": "*",
+		"ext-dom": "*",
 		"ext-simplexml": "*",
 		"cmpayments/iban": "^1.1"
-    },
+	},
 	"require-dev": {
-		"phpunit/phpunit": "^8.3"
+		"phpunit/phpunit": "^8.3",
+		"ext-bcmath": "*",
+		"ext-mbstring": "*"
 	}
 }

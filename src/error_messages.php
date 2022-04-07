@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by Dumitru Russu. e-mail: dmitri.russu@gmail.com
- * Date: 6/24/13
- * Time: 10:59 AM
- * Here we keep the DEFINES CONSTANTS for SEPA error messages.
- */
 
 //Error message for SepaGroupHeader class
 define('ERROR_MSG_MESSAGE_IDENTIFICATION', 'SEPA Group Header Problem with MessageIdentification <MsgId>, Message Id is either missing or too big.');

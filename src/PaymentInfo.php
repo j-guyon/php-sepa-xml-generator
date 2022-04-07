@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by Dumitru Russu. e-mail: dmitri.russu@gmail.com
- * Date: 7/8/13
- * Time: 8:47 PM
- * Sepa Payment Info
- */
-
 namespace SEPA;
 
 /**
