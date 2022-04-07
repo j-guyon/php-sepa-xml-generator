@@ -167,22 +167,6 @@ class PaymentInfo extends Message implements PaymentInfoInterface
      * @var string
      */
     private $categoryPurposeCode = '';
-
-    /**
-     * Specifies the high level purpose of the instruction based on a set of pre-defined categories. Propietary format.
-     * it property is optional.
-     *
-     * @var string
-     */
-    private $categoryPurposePropietary = '';
-
-    /**
-     * Specifies the high level purpose of the instruction based on a set of pre-defined categories. Code  format.
-     * it property is optional.
-     *
-     * @var string
-     */
-    private $categoryPurposeCode = '';
     /**
      * Specifies the high level purpose of the instruction based on a set of pre-defined categories. Propietary format.
      * it property is optional.
@@ -275,30 +259,6 @@ class PaymentInfo extends Message implements PaymentInfoInterface
     public function getPaymentInformationIdentification()
     {
         return $this->paymentInformationIdentification;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCreditorCountry()
-    {
-        return $this->creditorCountry;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCreditorAddressLine1()
-    {
-        return $this->creditorAddressLine1;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCreditorAddressLine2()
-    {
-        return $this->creditorAddressLine2;
     }
 
     public function getCreditorName()
