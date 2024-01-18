@@ -1,5 +1,5 @@
 {
-	"name": "dragermrb/php-sepa-xml-generator",
+	"name": "j-guyon/php-sepa-xml-generator",
 	"type": "library",
 	"description": "Creates an XML file for a Single Euro Payments Area (SEPA) Direct Debit Payment.",
 	"keywords": [
@@ -20,6 +20,10 @@
 		{
 			"name": "Dmitri Russu (original developer)",
 			"email": "dmitri.russu@gmail.com"
+		},
+		{
+			"name": "Julien Guyon",
+			"email": "julienguyon@hotmail.com"
 		}
 	],
 	"autoload": {

@@ -84,7 +84,7 @@ class XMLGenerator extends ValidationRules implements XMLGeneratorInterface
      * Save Xml File
      *
      * @param null $fileName
-     * @return bool|mixed
+     * @return XMLGenerator
      */
     public function save($fileName = null)
     {

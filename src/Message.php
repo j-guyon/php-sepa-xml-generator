@@ -35,7 +35,10 @@ class Message extends XMLGenerator implements MessageInterface
     private function createMessage()
     {
         switch ($this->getDocumentPainMode()) {
-            case self::PAIN_001_001_02:
+            case self::PAIN_001_001_02: {
+                    $documentMessage = "<pain.001.001.02></pain.001.001.02>";
+                    break;
+                }
             case self::PAIN_001_001_03: {
                     $documentMessage = "<CstmrCdtTrfInitn></CstmrCdtTrfInitn>";
                     break;

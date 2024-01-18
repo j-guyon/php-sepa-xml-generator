@@ -75,7 +75,7 @@ class XMLGeneratorFactoryTest extends \PHPUnit\Framework\TestCase
                 SEPA\Factory\XMLGeneratorFactory::createXMLGroupHeader()
                     ->setMessageIdentification(1)
                     ->setInitiatingPartyName('Amazing SRL ???? ыаывпавпва')
-                    ->setAddressLine('Chisinau, str. Stefan Cel Mare 145')->setCountry('Moldova') // Optional
+                    ->setAddressLine('Chisinau, str. Stefan Cel Mare 145')->setCountry('MD') // Optional
             )
                 ->addMessagePaymentInfo(
                     SEPA\Factory\XMLGeneratorFactory::createXMLPaymentInfo()
@@ -93,6 +93,7 @@ class XMLGeneratorFactoryTest extends \PHPUnit\Framework\TestCase
                                 ->setBIC('AABAFI42')
                                 ->setCreditorName('1222')
                                 ->setIBAN('MD24 AG000225100013104168')
+                                ->setEndToEndIdentification('Custom Identifier 1')
                         )
                         ->addCreditTransferTransaction(
                             SEPA\Factory\XmlGeneratorFactory::createXMLCreditTransferTransaction()
@@ -102,6 +103,7 @@ class XMLGeneratorFactoryTest extends \PHPUnit\Framework\TestCase
                                 ->setBIC('AABAFI42')
                                 ->setCreditorName('1222')
                                 ->setIBAN('MD24 AG000225100013104168')
+                                ->setEndToEndIdentification('Custom Identifier 2')
                         )
                         ->addCreditTransferTransaction(
                             SEPA\Factory\XmlGeneratorFactory::createXMLCreditTransferTransaction()
@@ -111,12 +113,28 @@ class XMLGeneratorFactoryTest extends \PHPUnit\Framework\TestCase
                                 ->setBIC('AABAFI42')
                                 ->setCreditorName('1222')
                                 ->setIBAN('MD24 AG000225100013104168')
+                                ->setEndToEndIdentification('Custom Identifier 3')
                         )
                 )
         )->save($fileExist = realpath(__DIR__) . '/xml_files/sepa_ct_00100102.xml');
 
         $this->assertTrue(file_exists($fileExist));
     }
+
+    public function testCreditTransferXmlSchema00100102()
+    {
+        $dom = new DOMDocument();
+        $xmlFile = realpath(__DIR__) . '/xml_files/sepa_ct_00100102.xml';
+        $xsdFile = realpath(__DIR__) . '/../src/ISO20022_RULES/pain.001.001.02.xsd';
+        $dom->load($xmlFile, LIBXML_NOBLANKS);
+
+        if (!file_exists($xsdFile)) {
+            throw new Exception('XSD File not found!');
+        }
+
+        $this->assertTrue($dom->schemaValidate($xsdFile));
+    }
+
 
     public function testCreateCreditTransferXmlFile00100103()
     {
@@ -171,6 +189,20 @@ class XMLGeneratorFactoryTest extends \PHPUnit\Framework\TestCase
         )->save($fileExist = realpath(__DIR__) . '/xml_files/sepa_ct_00100103.xml');
 
         $this->assertTrue(file_exists($fileExist));
+    }
+
+    public function testCreditTransferXmlSchema00100103()
+    {
+        $dom = new DOMDocument();
+        $xmlFile = realpath(__DIR__) . '/xml_files/sepa_ct_00100103.xml';
+        $xsdFile = realpath(__DIR__) . '/../src/ISO20022_RULES/pain.001.001.03.xsd';
+        $dom->load($xmlFile, LIBXML_NOBLANKS);
+
+        if (!file_exists($xsdFile)) {
+            throw new Exception('XSD File not found!');
+        }
+
+        $this->assertTrue($dom->schemaValidate($xsdFile));
     }
 
     public function testSaveGeneratedXMLFile()

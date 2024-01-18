@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:pain.001.001.02 pain.001.001.02.xsd">
-  <CstmrCdtTrfInitn>
+  <pain.001.001.02>
     <GrpHdr>
       <MsgId>1</MsgId>
-      <CreDtTm>2019-09-10T14:24:44</CreDtTm>
+      <CreDtTm>2024-01-18T18:03:14</CreDtTm>
       <BtchBookg>false</BtchBookg>
       <NbOfTxs>3</NbOfTxs>
       <CtrlSum>176.50</CtrlSum>
@@ -12,7 +12,7 @@
         <Nm>Amazing SRL ???? yayvpavpva</Nm>
         <PstlAdr>
           <AdrLine>Chisinau, str. Stefan Cel Mare 145</AdrLine>
-          <Ctry>Moldova</Ctry>
+          <Ctry>MD</Ctry>
         </PstlAdr>
       </InitgPty>
     </GrpHdr>
@@ -24,7 +24,7 @@
           <Cd>SEPA</Cd>
         </SvcLvl>
       </PmtTpInf>
-      <ReqdExctnDt>2019-09-10</ReqdExctnDt>
+      <ReqdExctnDt>2024-01-18</ReqdExctnDt>
       <Dbtr>
         <Nm>Amazing SRL</Nm>
       </Dbtr>
@@ -42,7 +42,7 @@
       <CdtTrfTxInf>
         <PmtId>
           <InstrId>3</InstrId>
-          <EndToEndId/>
+          <EndToEndId>Custom Identifier 1</EndToEndId>
         </PmtId>
         <Amt>
           <InstdAmt Ccy="EUR">100.50</InstdAmt>
@@ -67,7 +67,7 @@
       <CdtTrfTxInf>
         <PmtId>
           <InstrId>4</InstrId>
-          <EndToEndId/>
+          <EndToEndId>Custom Identifier 2</EndToEndId>
         </PmtId>
         <Amt>
           <InstdAmt Ccy="EUR">50.50</InstdAmt>
@@ -92,7 +92,7 @@
       <CdtTrfTxInf>
         <PmtId>
           <InstrId>4</InstrId>
-          <EndToEndId/>
+          <EndToEndId>Custom Identifier 3</EndToEndId>
         </PmtId>
         <Amt>
           <InstdAmt Ccy="EUR">25.50</InstdAmt>
@@ -115,5 +115,5 @@
         </RmtInf>
       </CdtTrfTxInf>
     </PmtInf>
-  </CstmrCdtTrfInitn>
+  </pain.001.001.02>
 </Document>

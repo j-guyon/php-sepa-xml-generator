@@ -1,6 +1,6 @@
 # PHP SEPA XML Generator
 
-(fork of https://github.com/dmitrirussu/php-sepa-xml-generator)
+**This is a fork from https://github.com/dmitrirussu/php-sepa-xml-generator and https://github.com/dragermrb/php-sepa-xml-generator witch fix some structure issues with in the `pain.001.001.02` format and add some XSD validation in tests.** 
 
 Now in this release you are able todo SEPA CreditTransfer and DirDebit
 
